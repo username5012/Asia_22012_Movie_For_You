@@ -24,21 +24,14 @@ for page in range(1,32):
         for title_num in range(1 ,21):
             driver.get(url)
             time.sleep(0.5)
-            print('debug01')
             movie_title_xpath = '//*[@id="old_content"]/ul/li[{}]/a'.format(title_num)
-            print('debug02')
             title = driver.find_element('xpath', movie_title_xpath).text
-            print('debug03')
             driver.find_element('xpath', movie_title_xpath).click()
-            print('debug04')
             time.sleep(0.1)
-            print('debug05')
             try:
-                print('debug06')
                 driver.find_element('xpath', review_button_xpath).click()
                 time.sleep(0.1)
                 review_num = driver.find_element('xpath', review_num_path).text
-                print('debug07')
                 review_num = review_num.replace(',', '')
                 review_range = (int(review_num) - 1)// 10 + 1
                 if review_range > 3:
