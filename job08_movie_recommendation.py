@@ -19,7 +19,7 @@ tfidf_matrix = mmread('./models/tfidf_movie_review.mtx').tocsr()
 with open('./models/tfidf.pickle', 'rb') as f:
     tfidf = pickle.load(f)
 
-# 영화 제목 이용
+# < 영화 제목 이용 >
 movie_idx = df_reviews[df_reviews['titles']=='겨울왕국 2 (Frozen 2)'].index[0]  # 제목이 ''인 영화의 Index 번호 (ex. 코코 -> 2944, 모아나 -> 476)
 cosin_sim = linear_kernel(tfidf_matrix[movie_idx], tfidf_matrix)    # cosin_sim : 코사인 유사도  | # linear_kernel : 코사인값 계산
 print(cosin_sim)
@@ -34,7 +34,7 @@ print(recommendation[1:11])
 
 
 
-# # Keyword 이용
+# < Keyword 이용 >
 # embedding_model = Word2Vec.load('./models/word2vec_movie_review.model')
 # key_word = '송강호'
 # sim_word = embedding_model.wv.most_similar(key_word, topn=10)
@@ -54,6 +54,7 @@ print(recommendation[1:11])
 # print(recommendation)
 #
 #
+# < 문장 이용 => 전처리 작업 필요>
 # sentence = '화려한 액션과 소름 돋는 반전이 있는 영화'
 # review = re.sub('[^가-힣 ]', ' ', sentence)
 # okt = Okt()
